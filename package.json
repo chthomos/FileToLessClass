@@ -1,7 +1,7 @@
 {
   "name": "filetolessclass",
   "description": "Gets all files in a directory and creates a less class for each file. Useful for sprites",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/chthomos/FileToLessClass",
   "author": {
     "name": "Harry Thomos",
