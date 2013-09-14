@@ -58,8 +58,7 @@ module.exports = function(grunt) {
           var ignored = 0;
           fs.readdirSync(folder).forEach(function(f){                  
             var extension = getExtension(folder + "/" + f);
-            var name= "";            
-            console.log(extension);
+            var name= "";                        
             if ((options.validExtensions.indexOf(extension)!==-1)&&(!fs.lstatSync(folder + "/" + f).isDirectory())){
               //The file is valid
               count +=1;
