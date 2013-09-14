@@ -49,25 +49,28 @@ module.exports = function(grunt) {
         }
         output += "\n";
       }
-
+      var folder = f.orig.src[0];
       //Loop through files
-      grunt.log.writeln("Processing folder: " + f.orig.src);
-      if (fs.existsSync(f.orig.src)) { 
-        if (fs.lstatSync(f.orig.src).isDirectory()){      
-
+      grunt.log.writeln("Processing folder: " + folder);      
+      if (fs.existsSync(folder)) { 
+       if (fs.lstatSync(folder).isDirectory()){      
           var count =0;
-          fs.readdirSync(f.orig.src).forEach(function(f){      
-            count +=1;
-            var extension = getExtension(options.imagePath + "/" + f)
-            var name= "";
-            if (options.validExtensions.indexOf(extension)!=='-1'){
+          var ignored = 0;
+          fs.readdirSync(folder).forEach(function(f){                  
+            var extension = getExtension(folder + "/" + f);
+            var name= "";            
+
+            if ((options.validExtensions.indexOf(extension)!=='-1')&&(!fs.lstatSync(folder + "/" + f).isDirectory())){
               //The file is valid
+              count +=1;
               name = getName(f);
-              output += "." + options.lessPrefix + name + options.lessSuffix + "{\t.sprite(" + name + ");}\n";
-            }        
+              output += "." + options.lessPrefix + name + options.lessSuffix + "{\t.sprite(@" + name + ");}\n";
+            }        else {
+              ignored +=1;
+            }
           });
           grunt.file.write(f.dest,output);
-          grunt.log.ok('File "' + f.dest + '" created from ' + count + ' file(s) in ' + f.orig.src + ' directory');    
+          grunt.log.ok('File "' + f.dest + '" created from ' + count + ' file(s)  (ignored ' + ignored + ' files / folders)');    
         }else {
           grunt.log.error(f.orig.src + ' is not a directory');
         }
