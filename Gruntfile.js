@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     },
 
     // Configuration to be run (and then tested).
-    FileToLessClass: {
+    filetolessclass: {
       default_options: {
         options: {     
           importers : {

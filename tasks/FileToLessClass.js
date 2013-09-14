@@ -11,7 +11,7 @@ var fs = require('fs');
 var path = require('path');
 module.exports = function(grunt) {
 
-  grunt.registerMultiTask('FileToLessClass', 'Gets all files in a directory and creates a less class for each file. Useful for sprites', function() {
+  grunt.registerMultiTask('filetolessclass', 'Gets all files in a directory and creates a less class for each file. Useful for sprites', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       validExtensions : ['png','jpg','gif'],    //Extensions to generate classes from
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
             if (options.validExtensions.indexOf(extension)!=='-1'){
               //The file is valid
               name = getName(f);
-              output += "." + options.lessPrefix + name + options.lessSuffix + "{\t.sprite(@" + name + ");}\n";
+              output += "." + options.lessPrefix + name + options.lessSuffix + "{\t.sprite(" + name + ");}\n";
             }        
           });
           grunt.file.write(f.dest,output);

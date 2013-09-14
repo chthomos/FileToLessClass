@@ -1,5 +1,5 @@
 {
-  "name": "FileToLessClass",
+  "name": "filetolessclass",
   "description": "Gets all files in a directory and creates a less class for each file. Useful for sprites",
   "version": "0.1.0",
   "homepage": "https://github.com/chthomos/FileToLessClass",
@@ -27,10 +27,7 @@
   "scripts": {
     "test": "grunt test"
   },
-  "devDependencies": {
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-nodeunit": "~0.2.0",
+  "devDependencies": {  
     "grunt": "~0.4.1"
   },
   "peerDependencies": {
